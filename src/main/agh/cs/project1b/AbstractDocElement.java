@@ -7,12 +7,14 @@ import java.util.*;
 public abstract class AbstractDocElement {
     protected HashMap<Key,SimpleDocElement> children;
     protected Levels childLevel;
-    protected String content= "";
+    protected String content;
 
 
     AbstractDocElement(){
         this.children= new LinkedHashMap<>();
+        this.content="";
     }
+
 
     public void addContent(String content){
         if(this.content.isEmpty()) this.content=content;
@@ -45,7 +47,6 @@ public abstract class AbstractDocElement {
     public Boolean findChild(Levels level, String id) throws NoSuchFieldException {
         if(!this.children.isEmpty()){
             if(this.childLevel==level) {
-                //SimpleDocElement child = iterator.next();
                 return this.children.containsKey(new Key(level,id));
             }else {
                 Iterator<SimpleDocElement> iterator = new LinkedList<>(this.children.values()).listIterator();
@@ -60,28 +61,24 @@ public abstract class AbstractDocElement {
         } else return false;
     }
 
-    /*public Boolean getChild(Levels level, String id) throws NoSuchFieldException {
-        if(!this.children.isEmpty()){
-            Iterator<SimpleDocElement> iterator = this.children.listIterator();
-            //SimpleDocElement child = iterator.next();
-
-            if(this.getChildLevel()==level) {
-                return !child.getKey().getId().equals(id);
-            }
-            Boolean foundElem=false;
-            while(iterator.hasNext() && !foundElem){
+    public SimpleDocElement getChild(Levels level, String id) throws NoSuchFieldException {
+        if(findChild(level,id)){
+            //System.out.println("Element istnieje w drzewie");
+            //System.out.println("przeszukiwanie: "+this.toString());
+            if(this.childLevel==level) {
+                //System.out.println("Znalezniono");
+                return this.children.get(new Key(level,id));
+            }else {
+                Iterator<SimpleDocElement> iterator = new LinkedList<>(this.children.values()).listIterator();
                 SimpleDocElement child = iterator.next();
-                foundElem = child.findChild(level,id);
+                while (iterator.hasNext() && !child.findChild(level,id)) {
+                    child = iterator.next();
+                }
+                return child.getChild(level, id);
             }
-            return foundElem;
         }
-        else throw new NoSuchFieldException("This element has no substructure");
-    }*/
-
-    /*public Levels getChildLevel() throws NoSuchFieldException{
-        if(this.children.isEmpty()) throw new NoSuchFieldException("This document element has no substructure");
-        else return this.childLevel;
-    }*/
+        else throw new NoSuchFieldException("No such element exists");
+    }
 
     public void printChildren(String prefix){
         if(!this.children.isEmpty()){

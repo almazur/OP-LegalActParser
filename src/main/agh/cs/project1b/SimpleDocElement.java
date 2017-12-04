@@ -1,8 +1,7 @@
 package agh.cs.project1b;
 
 public class SimpleDocElement extends AbstractDocElement{
-    //protected List<SimpleDocElement> children;//=null;
-    protected Key key; //key representing SimpleDocElem
+    protected Key key;
 
 
     SimpleDocElement(Key key){
@@ -14,12 +13,11 @@ public class SimpleDocElement extends AbstractDocElement{
         return this.key;
     }
 
-    public void printSubTree(){
+    public void printSubTree(String initIndentation,String indentation){
         if(!this.children.isEmpty()){
-            System.out.println("\n"+this.key.toString() + " " + this.content + " " + " zawiera: ");
-            printChildren("");
             for(SimpleDocElement child : this.children.values()){
-                child.printSubTree();
+                System.out.println(initIndentation+child.toString());
+                child.printSubTree(initIndentation+indentation,indentation);
             }
         }
     }
