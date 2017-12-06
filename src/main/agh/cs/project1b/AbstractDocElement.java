@@ -21,12 +21,12 @@ public abstract class AbstractDocElement {
         else this.content= dehyphenContent(this.content) + content;
     }
 
-    public String dehyphenContent(String content){
+    private String dehyphenContent(String content){
         if(content.endsWith("-")) return content.replaceFirst("-$","");
         else return content+" ";
     }
 
-    protected SimpleDocElement getLastChild(){
+    private SimpleDocElement getLastChild(){
         if(this.children.isEmpty()) return null;
         else{
             List<SimpleDocElement> childrenCopy = new LinkedList<>(this.children.values());
@@ -44,7 +44,7 @@ public abstract class AbstractDocElement {
         }
     }
 
-    public Boolean findChild(Levels level, String id) throws NoSuchFieldException {
+    protected Boolean findChild(Levels level, String id) throws NoSuchFieldException {
         if(!this.children.isEmpty()){
             if(this.childLevel==level) {
                 return this.children.containsKey(new Key(level,id));
@@ -63,10 +63,7 @@ public abstract class AbstractDocElement {
 
     public SimpleDocElement getChild(Levels level, String id) throws NoSuchFieldException {
         if(findChild(level,id)){
-            //System.out.println("Element istnieje w drzewie");
-            //System.out.println("przeszukiwanie: "+this.toString());
             if(this.childLevel==level) {
-                //System.out.println("Znalezniono");
                 return this.children.get(new Key(level,id));
             }else {
                 Iterator<SimpleDocElement> iterator = new LinkedList<>(this.children.values()).listIterator();

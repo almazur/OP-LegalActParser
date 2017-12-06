@@ -18,26 +18,74 @@ public class ArgumentsParser {
     }
 
     public ArrayList<Object> parseArgs() throws IllegalArgumentException {
-        if(this.args.size() <= 2) throw new IllegalArgumentException("Too few arguments");
-        ArrayList<Object> argsList = new ArrayList<>();
+        ArrayList<Object> parsedArgs = new ArrayList<>();
+        String argsAsString = "";
+        for (String s : this.args.subList(1, this.args.size())) {
+            argsAsString = argsAsString + " " + s;
+        }
+        System.out.println(argsAsString);
+        //wypisanie całego spisu treści | in: "-t", out "false"
+        if (argsAsString.matches("^\\s\\-t$")) {
+            parsedArgs.add(false);
+            return parsedArgs;
+        }
+        //wypisanie treści działu  | in: "-t dział id" or "-t id", out "false id"
+        if (argsAsString.matches("^\\s\\-t\\s\\w+\\s\\w+$") && this.args.get(1).toLowerCase().equals("dział")
+                || argsAsString.matches("^\\s-t\\s\\w+$")) {
+            parsedArgs.add(false);
+            parsedArgs.add(this.args.get(this.args.size() - 1));
+            return parsedArgs;
+        }
+        //wypisanie tresci jednego artykułu | in: "-t art. id." out "true id"
+        if (argsAsString.matches("^\\s-t\\s\\w+\\.\\s\\w+\\.$") && this.args.get(1).toLowerCase().equals("art.")) {
+            parsedArgs.add(true);
+            parsedArgs.add(this.args.get(this.args.size() - 1));
+            return parsedArgs;
+        }
+        //wypisanie tresci zakresu artykułów | in: "-t art. id-id." out "true id"
+        if (argsAsString.matches("^ -t\\s\\w+\\.\\s\\w+-\\w+\\.$") && this.args.get(1).toLowerCase().equals("art.")) {
+            parsedArgs.add(true);
+            parsedArgs.add(this.args.get(1));
+            parsedArgs.add(this.args.get(2));
+            return parsedArgs;
+        }
+        throw new IllegalArgumentException("Arguments are not correct");
+    }
+
+
+        //if(args.matches("^-t"))
+
+
+
+        /*if(this.args.size() <= 2) throw new IllegalArgumentException("Too few arguments");
+        ArrayList<Object> parsedArgs = new ArrayList<>();
         if(this.args.get(1).equals("-t")){
-            argsList.add(false);
+            parsedArgs.add(false);
             if(this.args.size()==2){
-                return argsList;
+                return parsedArgs;
             }
             if(this.args.size()>3) throw new IllegalArgumentException("-t option accepts only one argument");
-            argsList.add(this.args.get(2));
-            return argsList;
+            parsedArgs.add(this.args.get(2));
+            return parsedArgs;
         }
-        argsList.add(true);
+        parsedArgs.add(true);
         if(args.size()==3){
             //System.out.println("Size of command line to "+args.size());
-            if(this.args.get(1).equals("art."))  argsList.add(Levels.ART);
-            if(this.args.get(1).equals("rozdział"))  argsList.add(Levels.ROZDZIAL);
-            argsList.add(this.args.get(2));
+            if(this.args.get(1).equals("art.")) {
+                parsedArgs.add(Levels.ART);
+                if(this.args.get(2).matches("^d+-d+$")){
+                    String[] parts = this.args.get(2).split("-",2);
+                    parsedArgs.add(parts[0]);
+                    parsedArgs.add(parts[1]);
+                    return parsedArgs;
+                }
+                parsedArgs.add(this.args.get(2));
+                return parsedArgs;
+            }
+            //if(this.args.get(1).equals("rozdział"))  parsedArgs.add(Levels.ROZDZIAL);
+            //parsedArgs.add(this.args.get(2));
         }
-        return argsList;
-    }
+        return parsedArgs;*/
 
     public Scanner initScanner() throws FileNotFoundException {
         String filename = this.args.get(0);

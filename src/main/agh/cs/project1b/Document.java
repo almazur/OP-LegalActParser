@@ -1,38 +1,87 @@
 package agh.cs.project1b;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Document extends AbstractDocElement {
+    private HashMap<Key,SectionDocElement> sections;
+    private Levels sectionLevel;
 
     Document() {
         super();
+        this.sections=new LinkedHashMap<>();
+    }
+
+    public void addSection(SectionDocElement section){
+        if(this.sections.isEmpty() || this.sectionLevel.equals(section.key.getLevel())){
+            this.sections.put(section.getKey(),section);
+            this.sectionLevel=section.getKey().getLevel();
+        } else{
+            SectionDocElement lastElem=getLastSection();
+            lastElem.addChild(section);
+        }
+    }
+
+    protected SectionDocElement getLastSection(){
+        if(this.sections.isEmpty()) return null;
+        else{
+            List<SectionDocElement> sectionsCopy = new LinkedList<>(this.sections.values());
+            return sectionsCopy.get(sectionsCopy.size()-1);
+        }
     }
 
     public void printTableOfContents() throws NoSuchFieldException {
         System.out.println("SPIS TRESCI");
-        if(this.childLevel == Levels.ROZDZIAL) this.printChildren("* ");
+        if(this.sectionLevel == Levels.ROZDZIAL){
+            this.printSections("* ");
+        }
         else {
-            for(Key key : this.children.keySet()){
+            for(Key key : this.sections.keySet()){
                 System.out.print("* ");
                 printSectionContent(key.getId());
             }
         }
     }
 
-    public void printSectionContent(String id){
-        SimpleDocElement section = this.children.get(new Key(Levels.DZIAL,id));
-        System.out.println(section.toString());
-        if(section.childLevel==Levels.ROZDZIAL) section.printChildren("    - ");
+    public void printSections(String prefix){
+        if(!this.sections.isEmpty()){
+            for(AbstractDocElement section : this.sections.values()){
+                System.out.println(prefix+section.toString());
+            }
+        }
     }
 
-    public void printTree(){
-        if(!this.children.isEmpty()){
-            System.out.println(this.content + " " + " zawiera: ");
-            printChildren("");
-            for(SimpleDocElement child : this.children.values()){
-                child.printSubTree("","  ");
+    private void printSectionContent(String id){
+        SectionDocElement section = this.sections.get(new Key(Levels.DZIAL,id));
+        System.out.println(section.toString());
+        if(!section.children.isEmpty()) section.printChildren("    - ");
+    }
+
+    public void printTree() {
+        System.out.println(this.content);
+        if (this.sections.isEmpty()) System.out.println("No sections");
+        for (SectionDocElement section : this.sections.values()) {
+            System.out.println(section.toString());
+            if (!section.children.isEmpty()) {
+                for (SimpleDocElement chapter : section.children.values()) {
+                    System.out.println("  " + chapter.toString());
+                    printArticles((SectionDocElement) chapter, "  ");
+                }
+            } else {
+                printArticles(section, "  ");
             }
+        }
+    }
+
+    private void printArticles(SectionDocElement section,String indentation){
+        List<SimpleDocElement> childrenCopy=new LinkedList<>(this.children.values());
+        SimpleDocElement article = this.children.get(new Key(Levels.ART,section.getFirstId()));
+        Iterator<SimpleDocElement> iterator = childrenCopy.listIterator(childrenCopy.indexOf(article));
+        while(iterator.hasNext()){
+            article=iterator.next();
+            if(article.getKey().inRange(section.getFirstId(),section.getLastId())) {
+                System.out.println(indentation+article.toString());
+                article.printSubTree("    ", "  ");
+            } else break;
         }
     }
 

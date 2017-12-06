@@ -7,40 +7,55 @@ import java.util.Scanner;
 
 public class DocParser {
     private Scanner scanner;
+    private AbstractDocElement lastDetectedSimpleDocElement;
+    private SectionDocElement lastDetectedSection;
+    private Boolean sectionHasBeenDetected;
 
     DocParser(Scanner scanner) {
         this.scanner = scanner;
+        this.sectionHasBeenDetected=false;
     }
 
     public Document createTree() throws IllegalArgumentException{
         if(!this.scanner.hasNextLine()) throw new IllegalArgumentException("The document is empty");
         else {
             Document root = new Document();
-            AbstractDocElement last = root;
+            this.lastDetectedSimpleDocElement = root;
 
             while(this.scanner.hasNextLine()){
                 String line = this.scanner.nextLine();
-                last = processLineAndReturnLastElem(line,root,last);
+                processLine(line,root);
             }
             return root;
         }
     }
 
-    private AbstractDocElement processLineAndReturnLastElem(String line, Document root, AbstractDocElement last){
+    private void processLine(String line, Document root){
         while(!line.isEmpty()){
             if(isSimpleText(line)){
-                if(!matchesForbiddenRegex(line)) last.addContent(line);
+                if(!matchesForbiddenRegex(line)) {
+                    if (this.sectionHasBeenDetected) this.lastDetectedSection.addContent(line);
+                    else this.lastDetectedSimpleDocElement.addContent(line);
+                }
                 line=""; ///Moze funkcja moveContent ktora od razu robi line=""?
             }
             else {
                 Levels level = findLevel(line);
-                SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
-                root.addChild(child);
+                if(level==Levels.DZIAL || level==Levels.ROZDZIAL){
+                    SectionDocElement section = new SectionDocElement(new Key(level, extractIdNum(line, level)));
+                    root.addSection(section);
+                    this.sectionHasBeenDetected = true;
+                    this.lastDetectedSection = section;
+                } else {
+                    SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
+                    root.addChild(child);
+                    if(level==Levels.ART) this.lastDetectedSection.setLastId(extractIdNum(line, level));
+                    this.sectionHasBeenDetected = false;
+                    this.lastDetectedSimpleDocElement = child;
+                }
                 line = removeId(line, level);
-                last = child;
             }
         }
-        return last;
     }
 
     private Levels findLevel(String line){

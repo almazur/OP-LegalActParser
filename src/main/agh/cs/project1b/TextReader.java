@@ -11,9 +11,9 @@ public class TextReader {
             //argParser.printArgs();
             Scanner scanner = argsParser.initScanner();
             Document document = new DocParser(scanner).createTree();
-            document.explore(argsParser.parseArgs());
-            //document.printTableOfContents();
-            //document.printTree();
+            //document.explore(argsParser.parseArgs());
+            document.printTableOfContents();
+            document.printTree();
             scanner.close();
         }catch (FileNotFoundException e) {
             e.printStackTrace();
