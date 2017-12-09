@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="938639dc-2a56-4ecf-90ad-c4d7652eafa6" name="Default" comment="Added pattern and matcher">
+    <list default="true" id="938639dc-2a56-4ecf-90ad-c4d7652eafa6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/DocParser.class" afterPath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/DocParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/Levels.class" afterPath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/Levels.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/DocParser.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/DocParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/Levels.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/Levels.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -376,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512837013744</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added pattern and matcher">
+      <created>1512843366432</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1512843366432</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
