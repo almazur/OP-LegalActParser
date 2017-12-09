@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DocParser {
     private Scanner scanner;
@@ -32,31 +34,11 @@ public class DocParser {
 
     private void processLine(String line, Document root){
         while(!line.isEmpty()){
-            if(isSimpleText(line)){
-                line=processSimpleText(line,root);
-                /*if(!matchesForbiddenRegex(line)) {
-                    if (this.sectionHasBeenDetected) this.lastDetectedSection.addContent(line);
-                    else this.lastDetectedSimpleDocElement.addContent(line);
-                }
-                line=""; ///Moze funkcja moveContent ktora od razu robi line=""?*/
-            }
+            if(isSimpleText(line)) line=processSimpleText(line,root);
             else {
                 Levels level = findLevel(line);
-                if(level==Levels.DZIAL || level==Levels.ROZDZIAL){
-                    /*SectionDocElement section = new SectionDocElement(new Key(level, extractIdNum(line, level)));
-                    root.addSection(section);
-                    this.sectionHasBeenDetected = true;
-                    this.lastDetectedSection = section;*/
-                    line = processSection(line,root,level);
-                } else {
-                    /*SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
-                    root.addChild(child);
-                    if(level==Levels.ART) this.lastDetectedSection.setLastId(extractIdNum(line, level));
-                    this.sectionHasBeenDetected = false;
-                    this.lastDetectedSimpleDocElement = child;*/
-                    line = processSimpleDocElem(line,root,level);
-                }
-                //line = removeId(line, level);
+                if(level==Levels.DZIAL || level==Levels.ROZDZIAL) line = processSection(line,root,level);
+                else line = processSimpleDocElem(line,root,level);
             }
         }
     }
@@ -89,39 +71,58 @@ public class DocParser {
     private Levels findLevel(String line){
         Iterator<Levels> iterator = new ArrayList<>(Arrays.asList(Levels.values())).listIterator();
         Levels level = iterator.next();
-        while (iterator.hasNext() && !line.matches(level.toString())) {
+        //System.out.println("FINDING LEVEL IN "+line);
+        while(iterator.hasNext() && !Pattern.compile(level.toString()).matcher(line).find()){
+        //while(iterator.hasNext() && ! Pattern.matches(level.toString(),line)){
+        //while (iterator.hasNext() && !line.matches(level.toString())) {
             level = iterator.next();
         }
+        //System.out.println("FOUND LEVEL: "+level.toString());
         return level;
     }
 
     private Boolean isSimpleText(String line) {
+        //System.out.println("CHECKING IF SIMPLE TEXT "+line);
         if(line.isEmpty()) return false;
         for(Levels level : Levels.values()){
-            if (line.matches(level.toString())) return false;
+            //if (line.matches(level.toString())) return false;
+            //if(Pattern.matches(level.toString(),line)) return false;
+            if(Pattern.compile(level.toString()).matcher(line).find()) return false;
         }
+        //System.out.println("SIMPLE TEXT");
         return true;
     }
 
     private String extractIdNum(String line, Levels level){
-        if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)", 2)[0];
+        //System.out.println("Extracting from "+line);
+        /*if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)", 2)[0];
         if(level== Levels.UST) return line.split("\\.", 2)[0];
         String[] parts = line.split("\\s", 3);
         if(level== Levels.ART) {
             //System.out.println("numId "+parts[1].split("\\.", 2)[0]);
             return parts[1].split("\\.", 2)[0];
         }
-        else return parts[1];
+        else return parts[1];*/
+        Pattern pattern = Pattern.compile(level.toString());
+        Matcher matcher = pattern.matcher(line);
+        matcher.find();
+        return matcher.group("id");
     }
 
     private String removeId(String line,Levels level){
-        if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)\\s", 2)[1];
+        /*if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)\\s", 2)[1];
         if(level== Levels.UST) return line.split("\\.\\s", 2)[1];
         if(line.matches("^Art\\.\\s\\w+\\.\\s.+")) {//("^Art\\.\\s\\S+\\.\\s.+"){
             System.out.println("RemoveId "+line.split("\\s", 3)[2]);
             return line.split("\\s", 3)[2];
         }
-        return "";
+        return "";*/
+        //System.out.println("Removing id from "+line);
+        Pattern pattern = Pattern.compile(level.toString());
+        Matcher matcher = pattern.matcher(line);
+        //if(matcher.find()) System.out.println("FOUND: "+matcher.group());
+        //System.out.println("After removing: "+line.replace(matcher.group(),""));
+        return line.replaceFirst(level.toString(),"");
     }
 
     private Boolean matchesForbiddenRegex(String line){
