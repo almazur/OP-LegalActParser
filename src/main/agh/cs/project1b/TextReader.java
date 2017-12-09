@@ -7,6 +7,8 @@ import java.util.Scanner;
 public class TextReader {
     public static void main(String[] args) throws FileNotFoundException, IllegalArgumentException, NoSuchElementException{
         try {
+            //"C:\\Users\\Ola\\IdeaProjects\\project1\\src\\main\\agh\\cs\\project1\\uokik.txt"
+            //"C:\\Users\\Ola\\IdeaProjects\\project1\\src\\main\\agh\\cs\\project1\\konst.txt"
             ArgumentsParser argsParser = new ArgumentsParser(args);
             //argParser.printArgs();
             Scanner scanner = argsParser.initScanner();

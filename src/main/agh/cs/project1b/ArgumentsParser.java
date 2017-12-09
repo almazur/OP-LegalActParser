@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ArgumentsParser {
-    //"C:\\Users\\Ola\\IdeaProjects\\project1\\src\\main\\agh\\cs\\project1\\uokik.txt"
-    //"C:\\Users\\Ola\\IdeaProjects\\project1\\src\\main\\agh\\cs\\project1\\konst.txt"
 
     private List<String> args;
 

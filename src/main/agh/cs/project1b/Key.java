@@ -45,6 +45,12 @@ public class Key {
     }
 
     public Boolean inRange(String firstId, String lastId){
+        //System.out.println("firstId: "+firstId+", lastId "+lastId+", this.id "+this.id);
+
+        if(firstId.equals(this.id) || lastId.equals(this.id)) {
+            //System.out.println("HURRAY");
+            return true;
+        }
 
         Integer firstNum = Integer.valueOf(firstId.replaceFirst("[a-z]+",""));
         Integer lastNum = Integer.valueOf(lastId.replaceFirst("[a-z]+",""));

@@ -33,29 +33,57 @@ public class DocParser {
     private void processLine(String line, Document root){
         while(!line.isEmpty()){
             if(isSimpleText(line)){
-                if(!matchesForbiddenRegex(line)) {
+                line=processSimpleText(line,root);
+                /*if(!matchesForbiddenRegex(line)) {
                     if (this.sectionHasBeenDetected) this.lastDetectedSection.addContent(line);
                     else this.lastDetectedSimpleDocElement.addContent(line);
                 }
-                line=""; ///Moze funkcja moveContent ktora od razu robi line=""?
+                line=""; ///Moze funkcja moveContent ktora od razu robi line=""?*/
             }
             else {
                 Levels level = findLevel(line);
                 if(level==Levels.DZIAL || level==Levels.ROZDZIAL){
-                    SectionDocElement section = new SectionDocElement(new Key(level, extractIdNum(line, level)));
+                    /*SectionDocElement section = new SectionDocElement(new Key(level, extractIdNum(line, level)));
                     root.addSection(section);
                     this.sectionHasBeenDetected = true;
-                    this.lastDetectedSection = section;
+                    this.lastDetectedSection = section;*/
+                    line = processSection(line,root,level);
                 } else {
-                    SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
+                    /*SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
                     root.addChild(child);
                     if(level==Levels.ART) this.lastDetectedSection.setLastId(extractIdNum(line, level));
                     this.sectionHasBeenDetected = false;
-                    this.lastDetectedSimpleDocElement = child;
+                    this.lastDetectedSimpleDocElement = child;*/
+                    line = processSimpleDocElem(line,root,level);
                 }
-                line = removeId(line, level);
+                //line = removeId(line, level);
             }
         }
+    }
+
+    private String processSimpleText(String line, Document root){
+        if(!matchesForbiddenRegex(line)) {
+            if (this.sectionHasBeenDetected) this.lastDetectedSection.addContent(line);
+            else this.lastDetectedSimpleDocElement.addContent(line);
+        }
+        return "";
+    }
+
+    private String processSection(String line, Document root, Levels level){
+        SectionDocElement section = new SectionDocElement(new Key(level, extractIdNum(line, level)));
+        root.addSection(section);
+        this.sectionHasBeenDetected = true;
+        this.lastDetectedSection = section;
+        return removeId(line,level);
+    }
+
+    private String processSimpleDocElem(String line, Document root, Levels level){
+        SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
+        root.addChild(child);
+        if(level==Levels.ART) this.lastDetectedSection.setLastId(extractIdNum(line, level));
+        this.sectionHasBeenDetected = false;
+        this.lastDetectedSimpleDocElement = child;
+        return removeId(line,level);
     }
 
     private Levels findLevel(String line){
@@ -79,14 +107,20 @@ public class DocParser {
         if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)", 2)[0];
         if(level== Levels.UST) return line.split("\\.", 2)[0];
         String[] parts = line.split("\\s", 3);
-        if(level== Levels.ART) return parts[1].split("\\.", 2)[0];
+        if(level== Levels.ART) {
+            //System.out.println("numId "+parts[1].split("\\.", 2)[0]);
+            return parts[1].split("\\.", 2)[0];
+        }
         else return parts[1];
     }
 
     private String removeId(String line,Levels level){
         if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)\\s", 2)[1];
         if(level== Levels.UST) return line.split("\\.\\s", 2)[1];
-        if(line.matches("^Art\\.\\s\\w+\\.\\s.+")) return line.split("\\s", 3)[2];
+        if(line.matches("^Art\\.\\s\\w+\\.\\s.+")) {//("^Art\\.\\s\\S+\\.\\s.+"){
+            System.out.println("RemoveId "+line.split("\\s", 3)[2]);
+            return line.split("\\s", 3)[2];
+        }
         return "";
     }
 
