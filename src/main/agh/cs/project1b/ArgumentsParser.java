@@ -2,10 +2,9 @@ package agh.cs.project1b;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ArgumentsParser {
 
@@ -16,6 +15,50 @@ public class ArgumentsParser {
     }
 
     public ArrayList<Object> parseArgs() throws IllegalArgumentException {
+        ArrayList<Object> parsedArgs = new ArrayList<>();
+        String argsAsString = "";
+        for (String s : this.args/*.subList(1, this.args.size())*/) {
+            argsAsString = argsAsString + " " + s;
+        }
+        System.out.println(argsAsString);
+
+
+        Iterator<CMDPatterns> iterator = new ArrayList<>(Arrays.asList(CMDPatterns.values())).listIterator();
+        CMDPatterns cmd = iterator.next();
+        System.out.println("Pattern: "+cmd.toString());
+
+        while(iterator.hasNext() && !argsAsString.matches(cmd.toString())){//!matcher.find()){
+            cmd = iterator.next();
+            //matcher.usePattern(Pattern.compile(cmd.toString()));
+            System.out.println("Pattern: "+cmd.toString());
+        }
+
+        Matcher matcher = Pattern.compile(cmd.toString()).matcher(argsAsString);
+        matcher.find();
+        System.out.println("FINISH Pattern: "+cmd.toString());
+        switch (cmd) {
+            case TableAll: {
+                System.out.println("TABLE ALL");
+                parsedArgs.add(false);
+                return parsedArgs;
+            }
+            case TableDzial: {
+                System.out.println("TABLE DZIAL");
+                parsedArgs.add(false);
+                parsedArgs.add(matcher.group("id"));
+                return parsedArgs;
+            }
+            default:{
+                System.out.println("DIDN'T WORK");
+                parsedArgs.add(false);
+                return parsedArgs;
+            }
+        }
+        //parsedArgs.add(false);
+        //return parsedArgs;
+    }
+
+    /*public ArrayList<Object> parseArgs() throws IllegalArgumentException {
         ArrayList<Object> parsedArgs = new ArrayList<>();
         String argsAsString = "";
         for (String s : this.args.subList(1, this.args.size())) {
@@ -48,7 +91,7 @@ public class ArgumentsParser {
             return parsedArgs;
         }
         throw new IllegalArgumentException("Arguments are not correct");
-    }
+    }*/
 
 
         //if(args.matches("^-t"))

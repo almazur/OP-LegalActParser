@@ -43,29 +43,4 @@ public class Key {
         if(this.level== Levels.DZIAL) return "DZIAŁ "+this.id;
         return "";
     }
-
-    public Boolean inRange(String firstId, String lastId){
-        //System.out.println("firstId: "+firstId+", lastId "+lastId+", this.id "+this.id);
-
-        if(firstId.equals(this.id) || lastId.equals(this.id)) {
-            //System.out.println("HURRAY");
-            return true;
-        }
-
-        Integer firstNum = Integer.valueOf(firstId.replaceFirst("[a-z]+",""));
-        Integer lastNum = Integer.valueOf(lastId.replaceFirst("[a-z]+",""));
-        Integer thisNum = Integer.valueOf(this.id.replaceFirst("[a-z]+",""));
-        String firstStr=firstId.replaceFirst("\\d+","");
-        String lastStr=lastId.replaceFirst("\\d+","");
-        String thisStr=this.id.replaceFirst("\\d+","");
-
-        Boolean leftEdge,rightEdge;
-        leftEdge = thisStr.isEmpty() && firstStr.isEmpty() ? thisNum >= firstNum :
-                thisStr.isEmpty() ? thisNum > firstNum :
-                        thisNum > firstNum || thisNum.equals(firstNum) && thisStr.compareTo(firstStr) >=0;
-        rightEdge = thisStr.isEmpty() && lastStr.isEmpty() ? thisNum <= lastNum :
-                lastStr.isEmpty() ? thisNum < lastNum :
-                        thisNum < lastNum || thisNum.equals(lastNum) && thisStr.compareTo(lastStr) <=0;
-        return leftEdge && rightEdge;
-    }
 }

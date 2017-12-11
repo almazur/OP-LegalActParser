@@ -71,38 +71,21 @@ public class DocParser {
     private Levels findLevel(String line){
         Iterator<Levels> iterator = new ArrayList<>(Arrays.asList(Levels.values())).listIterator();
         Levels level = iterator.next();
-        //System.out.println("FINDING LEVEL IN "+line);
         while(iterator.hasNext() && !Pattern.compile(level.toString()).matcher(line).find()){
-        //while(iterator.hasNext() && ! Pattern.matches(level.toString(),line)){
-        //while (iterator.hasNext() && !line.matches(level.toString())) {
             level = iterator.next();
         }
-        //System.out.println("FOUND LEVEL: "+level.toString());
         return level;
     }
 
     private Boolean isSimpleText(String line) {
-        //System.out.println("CHECKING IF SIMPLE TEXT "+line);
         if(line.isEmpty()) return false;
         for(Levels level : Levels.values()){
-            //if (line.matches(level.toString())) return false;
-            //if(Pattern.matches(level.toString(),line)) return false;
             if(Pattern.compile(level.toString()).matcher(line).find()) return false;
         }
-        //System.out.println("SIMPLE TEXT");
         return true;
     }
 
     private String extractIdNum(String line, Levels level){
-        //System.out.println("Extracting from "+line);
-        /*if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)", 2)[0];
-        if(level== Levels.UST) return line.split("\\.", 2)[0];
-        String[] parts = line.split("\\s", 3);
-        if(level== Levels.ART) {
-            //System.out.println("numId "+parts[1].split("\\.", 2)[0]);
-            return parts[1].split("\\.", 2)[0];
-        }
-        else return parts[1];*/
         Pattern pattern = Pattern.compile(level.toString());
         Matcher matcher = pattern.matcher(line);
         matcher.find();
@@ -110,22 +93,12 @@ public class DocParser {
     }
 
     private String removeId(String line,Levels level){
-        /*if(level== Levels.PKT || level== Levels.LIT) return line.split("\\)\\s", 2)[1];
-        if(level== Levels.UST) return line.split("\\.\\s", 2)[1];
-        if(line.matches("^Art\\.\\s\\w+\\.\\s.+")) {//("^Art\\.\\s\\S+\\.\\s.+"){
-            System.out.println("RemoveId "+line.split("\\s", 3)[2]);
-            return line.split("\\s", 3)[2];
-        }
-        return "";*/
-        //System.out.println("Removing id from "+line);
-        Pattern pattern = Pattern.compile(level.toString());
-        Matcher matcher = pattern.matcher(line);
-        //if(matcher.find()) System.out.println("FOUND: "+matcher.group());
-        //System.out.println("After removing: "+line.replace(matcher.group(),""));
         return line.replaceFirst(level.toString(),"");
     }
 
     private Boolean matchesForbiddenRegex(String line){
-        return (line.matches("^\\d{4}-\\d{2}-\\d{2}$") || line.matches(".*©Kancelaria Sejmu.*"));
+        return (line.matches("^\\d{4}-\\d{2}-\\d{2}$")
+                || line.matches(".*©Kancelaria Sejmu.*")
+                || line.matches("^.?$"));
     }
 }

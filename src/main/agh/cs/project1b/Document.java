@@ -76,12 +76,12 @@ public class Document extends AbstractDocElement {
         List<SimpleDocElement> childrenCopy=new LinkedList<>(this.children.values());
         SimpleDocElement article = this.children.get(new Key(Levels.ART,section.getFirstId()));
         Iterator<SimpleDocElement> iterator = childrenCopy.listIterator(childrenCopy.indexOf(article));
+
         while(iterator.hasNext()){
             article=iterator.next();
-            if(article.getKey().inRange(section.getFirstId(),section.getLastId())) {
-                System.out.println(indentation+article.toString());
-                article.printSubTree("    ", "  ");
-            } else break;
+            System.out.println(indentation+article.toString());
+            article.printSubTree("    ", "  ");
+            if(article.getKey().getId().equals(section.getLastId())) break;
         }
     }
 
@@ -93,7 +93,7 @@ public class Document extends AbstractDocElement {
                 printTableOfContents();
                 return;
             }
-            if(this.childLevel != Levels.DZIAL) { //args: [false,">>id of DZIAL<<"]
+            if(this.sectionLevel != Levels.DZIAL) { //args: [false,">>id of DZIAL<<"]
                 throw new IllegalArgumentException("Document has no DZIAŁ's");
             }
             printSectionContent((String)args.get(1));
