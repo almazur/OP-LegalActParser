@@ -26,7 +26,7 @@ public abstract class AbstractDocElement {
         else return content+" ";
     }
 
-    private SimpleDocElement getLastChild(){
+    protected SimpleDocElement getLastChild(){
         if(this.children.isEmpty()) return null;
         else{
             List<SimpleDocElement> childrenCopy = new LinkedList<>(this.children.values());
@@ -35,9 +35,13 @@ public abstract class AbstractDocElement {
     }
 
     public void addChild(SimpleDocElement child){
-        if(this.children.isEmpty() || this.childLevel.equals(child.key.getLevel())){
+        //if(this.children.isEmpty() || this.childLevel.equals(child.key.getLevel()) || this.childLevel==Levels.ART && child.getKey().getLevel()==Levels.TYTUL){
+        if(this.children.isEmpty() || !child.getKey().getLevel().lessThen(this.childLevel)){
             this.children.put(child.getKey(),child);
-            this.childLevel=child.getKey().getLevel();
+            //if(!(this.childLevel==Levels.TYTUL)){
+                this.childLevel=child.getKey().getLevel();
+            //    System.out.println(">>> NEW CHILD LEVEL: "+this.childLevel.toString());
+            //}
         } else{
             SimpleDocElement lastElem=getLastChild();
             lastElem.addChild(child);

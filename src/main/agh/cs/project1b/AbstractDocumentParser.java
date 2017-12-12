@@ -7,22 +7,21 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DocParser {
-    private Scanner scanner;
-    private AbstractDocElement lastDetectedSimpleDocElement;
-    private SectionDocElement lastDetectedSection;
-    private Boolean sectionHasBeenDetected;
+public abstract class AbstractDocumentParser {
+    protected Scanner scanner;
+    protected AbstractDocElement lastDetectedDocElement;
+    //protected Levels recentLevel;
 
-    DocParser(Scanner scanner) {
+    AbstractDocumentParser(Scanner scanner) {
         this.scanner = scanner;
-        this.sectionHasBeenDetected=false;
+        //this.recentLevel=null;
     }
 
-    public Document createTree() throws IllegalArgumentException{
+    /*public KonstRoot createTree() throws IllegalArgumentException{
         if(!this.scanner.hasNextLine()) throw new IllegalArgumentException("The document is empty");
         else {
-            Document root = new Document();
-            this.lastDetectedSimpleDocElement = root;
+            AbstractRoot root = new AbstractRoot();
+            this.lastDetectedDocElement = root;
 
             while(this.scanner.hasNextLine()){
                 String line = this.scanner.nextLine();
@@ -30,41 +29,36 @@ public class DocParser {
             }
             return root;
         }
-    }
+    }*/
 
-    private void processLine(String line, Document root){
+    protected void processLine(String line, AbstractRoot root){
         while(!line.isEmpty()){
-            if(isSimpleText(line)) line=processSimpleText(line,root);
+            //System.out.println("Processing line "+line);
+            if(isSimpleText(line)){
+                //System.out.println(line+" is simple text");
+                line=processSimpleText(line,root);
+            }
             else {
                 Levels level = findLevel(line);
-                if(level==Levels.DZIAL || level==Levels.ROZDZIAL) line = processSection(line,root,level);
-                else line = processSimpleDocElem(line,root,level);
+                //System.out.println(line+" is not simple text, level: "+level.toString());
+                line = processSimpleDocElem(line,root,level);
             }
         }
     }
 
-    private String processSimpleText(String line, Document root){
+    private String processSimpleText(String line, AbstractRoot root){
         if(!matchesForbiddenRegex(line)) {
-            if (this.sectionHasBeenDetected) this.lastDetectedSection.addContent(line);
-            else this.lastDetectedSimpleDocElement.addContent(line);
+            this.lastDetectedDocElement.addContent(line);
         }
         return "";
     }
 
-    private String processSection(String line, Document root, Levels level){
-        SectionDocElement section = new SectionDocElement(new Key(level, extractIdNum(line, level)));
-        root.addSection(section);
-        this.sectionHasBeenDetected = true;
-        this.lastDetectedSection = section;
-        return removeId(line,level);
-    }
-
-    private String processSimpleDocElem(String line, Document root, Levels level){
+    private String processSimpleDocElem(String line, AbstractRoot root, Levels level){
         SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
         root.addChild(child);
-        if(level==Levels.ART) this.lastDetectedSection.setLastId(extractIdNum(line, level));
-        this.sectionHasBeenDetected = false;
-        this.lastDetectedSimpleDocElement = child;
+        if(level==Levels.ART) root.addArticle(child);
+        this.lastDetectedDocElement = child;
+        //this.recentLevel = level;
         return removeId(line,level);
     }
 
@@ -77,13 +71,18 @@ public class DocParser {
         return level;
     }
 
-    private Boolean isSimpleText(String line) {
+    protected abstract Boolean isSimpleText(String line);/*{
         if(line.isEmpty()) return false;
         for(Levels level : Levels.values()){
-            if(Pattern.compile(level.toString()).matcher(line).find()) return false;
+            if(Pattern.compile(level.toString()).matcher(line).find()){
+                //System.out.println("    LEVEL: "+level.toString());
+                //if(level!=Levels.TYTUL) return false;
+                //return this.recentLevel!=Levels.ROZDZIAL;
+                return false;
+            }
         }
         return true;
-    }
+    }*/
 
     private String extractIdNum(String line, Levels level){
         Pattern pattern = Pattern.compile(level.toString());
@@ -93,6 +92,8 @@ public class DocParser {
     }
 
     private String removeId(String line,Levels level){
+        //if(level==Levels.TYTUL) return line;
+        //System.out.println("    after removing id: "+line.replaceFirst(level.toString(),""));
         return line.replaceFirst(level.toString(),"");
     }
 

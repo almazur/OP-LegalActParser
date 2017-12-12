@@ -1,13 +1,17 @@
 package agh.cs.project1b;
 
 
+import java.util.HashMap;
+
 public class SectionDocElement extends SimpleDocElement {
     private String firstId,lastId;
+    //private HashMap<Key,SimpleDocElement> children;
 
     SectionDocElement(Key key){
         super(key);
-        this.firstId="";
-        this.lastId="";
+
+        //this.firstId="";
+        //this.lastId="";
     }
 
     public void setLastId(String lastId){
