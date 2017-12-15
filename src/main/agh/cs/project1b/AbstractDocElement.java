@@ -1,7 +1,5 @@
 package agh.cs.project1b;
 
-import sun.java2d.pipe.SpanShapeRenderer;
-
 import java.util.*;
 
 public abstract class AbstractDocElement {
@@ -35,56 +33,20 @@ public abstract class AbstractDocElement {
     }
 
     public void addChild(SimpleDocElement child){
-        //if(this.children.isEmpty() || this.childLevel.equals(child.key.getLevel()) || this.childLevel==Levels.ART && child.getKey().getLevel()==Levels.TYTUL){
         if(this.children.isEmpty() || !child.getKey().getLevel().lessThen(this.childLevel)){
             this.children.put(child.getKey(),child);
-            //if(!(this.childLevel==Levels.TYTUL)){
-                this.childLevel=child.getKey().getLevel();
-            //    System.out.println(">>> NEW CHILD LEVEL: "+this.childLevel.toString());
-            //}
+            this.childLevel=child.getKey().getLevel();
         } else{
             SimpleDocElement lastElem=getLastChild();
             lastElem.addChild(child);
         }
     }
 
-    /*protected Boolean findChild(Levels level, String id) throws NoSuchFieldException {
+    protected void printSubTree(String initIndentation,String indentation){
         if(!this.children.isEmpty()){
-            if(this.childLevel==level) {
-                return this.children.containsKey(new Key(level,id));
-            }else {
-                Iterator<SimpleDocElement> iterator = new LinkedList<>(this.children.values()).listIterator();
-                SimpleDocElement child = iterator.next();
-                Boolean foundElem = false;
-                while (iterator.hasNext() && !foundElem) {
-                    foundElem = child.findChild(level, id);
-                    child = iterator.next();
-                }
-                return foundElem || child.findChild(level, id);
-            }
-        } else return false;
-    }
-
-    public SimpleDocElement getChild(Levels level, String id) throws NoSuchFieldException {
-        if(findChild(level,id)){
-            if(this.childLevel==level) {
-                return this.children.get(new Key(level,id));
-            }else {
-                Iterator<SimpleDocElement> iterator = new LinkedList<>(this.children.values()).listIterator();
-                SimpleDocElement child = iterator.next();
-                while (iterator.hasNext() && !child.findChild(level,id)) {
-                    child = iterator.next();
-                }
-                return child.getChild(level, id);
-            }
-        }
-        else throw new NoSuchFieldException("No such element exists");
-    }*/
-
-    public void printChildren(String prefix){
-        if(!this.children.isEmpty()){
-            for(AbstractDocElement child : this.children.values()){
-                System.out.println(prefix+child.toString());
+            for(SimpleDocElement child : this.children.values()){
+                System.out.println(initIndentation+child.toString());
+                child.printSubTree(initIndentation+indentation,indentation);
             }
         }
     }

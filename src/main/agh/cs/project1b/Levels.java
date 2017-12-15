@@ -12,6 +12,7 @@ public enum Levels {
 
     private String regex;
     private Integer range;
+
     Levels(String regex,Integer range){
         this.regex=regex;
         this.range = range;

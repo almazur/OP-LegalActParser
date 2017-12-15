@@ -15,13 +15,23 @@ public abstract class AbstractDocumentParser {
         this.scanner = scanner;
     }
 
-    public abstract AbstractRoot createTree() throws IllegalArgumentException;
+    public DocumentRoot createTree() throws IllegalArgumentException{
+        if(!this.scanner.hasNextLine()) throw new IllegalArgumentException("Incorrect argument. The document is empty");
+        else {
+            DocumentRoot root = new DocumentRoot();
+            this.lastDetectedDocElement = root;
 
-    protected void processLine(String line, AbstractRoot root){
-        while(!line.isEmpty()){
-            if(isSimpleText(line)){
-                line=processSimpleText(line,root);
+            while(this.scanner.hasNextLine()){
+                String line = this.scanner.nextLine();
+                processLine(line,root);
             }
+            return root;
+        }
+    }
+
+    protected void processLine(String line, DocumentRoot root){
+        while(!line.isEmpty()){
+            if(isSimpleText(line)) line=processSimpleText(line);
             else {
                 Levels level = findLevel(line);
                 line = processSimpleDocElem(line,root,level);
@@ -29,20 +39,12 @@ public abstract class AbstractDocumentParser {
         }
     }
 
-    protected String processSimpleText(String line, AbstractRoot root){
-        if(!matchesForbiddenRegex(line)) {
-            this.lastDetectedDocElement.addContent(line);
-        }
+    protected String processSimpleText(String line){
+        if(!matchesForbiddenRegex(line)) this.lastDetectedDocElement.addContent(line);
         return "";
     }
 
-    protected abstract String processSimpleDocElem(String line, AbstractRoot root, Levels level);/*{
-        SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
-        root.addChild(child);
-        if(level==Levels.ART) root.addArticle(child);
-        this.lastDetectedDocElement = child;
-        return removeId(line,level);
-    }*/
+    protected abstract String processSimpleDocElem(String line, DocumentRoot root, Levels level);
 
     protected Levels findLevel(String line){
         Iterator<Levels> iterator = new ArrayList<>(Arrays.asList(Levels.values())).listIterator();

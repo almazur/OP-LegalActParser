@@ -24,8 +24,7 @@ public class Key {
 
         Key key = (Key) o;
 
-        if (getLevel() != key.getLevel()) return false;
-        return getId() != null ? getId().equals(key.getId()) : key.getId() == null;
+        return getLevel() == key.getLevel() && (getId() != null ? getId().equals(key.getId()) : key.getId() == null);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class Key {
         if(this.level== Levels.PKT || this.level== Levels.LIT) return this.id+")";
         if(this.level== Levels.ART) return "Art. "+this.id+".";
         if(this.level== Levels.UST) return this.id+".";
-        if(this.level==Levels.TYTUL) return this.id;
+        if(this.level== Levels.TYTUL) return this.id;
         if(this.level== Levels.ROZDZIAL) return "Rozdział "+this.id;
         if(this.level== Levels.DZIAL) return "DZIAŁ "+this.id;
         return "";

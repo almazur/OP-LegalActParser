@@ -9,28 +9,10 @@ public class UokikParser extends AbstractDocumentParser{
         super(scanner);
     }
 
-    public UokikRoot createTree() throws IllegalArgumentException{
-        if(!this.scanner.hasNextLine()) throw new IllegalArgumentException("The document is empty");
-        else {
-            UokikRoot root = new UokikRoot();
-            this.lastDetectedDocElement = root;
-
-            while(this.scanner.hasNextLine()){
-                String line = this.scanner.nextLine();
-                processLine(line,root);
-            }
-            return root;
-        }
-    }
-
-    protected String processSimpleDocElem(String line, AbstractRoot root, Levels level){
+    protected String processSimpleDocElem(String line, DocumentRoot root, Levels level){
         SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
         root.addChild(child);
-        //System.out.println("    LEVEL: "+level.toString());
-        if(level==Levels.ART) {
-            //System.out.println("DODAWANIE...");
-            root.addArticle(child);
-        }
+        if(level==Levels.ART) root.addArticle(child);
         this.lastDetectedDocElement = child;
         return removeId(line,level);
     }

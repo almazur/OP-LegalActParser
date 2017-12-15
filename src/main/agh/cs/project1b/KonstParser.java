@@ -11,24 +11,10 @@ public class KonstParser extends AbstractDocumentParser{
         this.insideDocument=false;
     }
 
-    public KonstRoot createTree() throws IllegalArgumentException{
-        if(!this.scanner.hasNextLine()) throw new IllegalArgumentException("The document is empty");
-        else {
-            KonstRoot root = new KonstRoot();
-            this.lastDetectedDocElement = root;
-
-            while(this.scanner.hasNextLine()){
-                String line = this.scanner.nextLine();
-                processLine(line,root);
-            }
-            return root;
-        }
-    }
-
-    private void processLine(String line, KonstRoot root){
+    protected void processLine(String line, DocumentRoot root){
         while(!line.isEmpty()){
             if(isSimpleText(line)){
-                line=processSimpleText(line,root);
+                line=processSimpleText(line);
             }
             else {
                 this.insideDocument=true;
@@ -38,18 +24,16 @@ public class KonstParser extends AbstractDocumentParser{
         }
     }
 
-    protected String processSimpleDocElem(String line, AbstractRoot root, Levels level){
+    protected String processSimpleDocElem(String line, DocumentRoot root, Levels level){
         SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
         root.addChild(child);
-        //System.out.println("    LEVEL: "+level.toString());
         if(level==Levels.ART) {
-            //System.out.println("DODAWANIE...");
             root.addArticle(child);
         }
         this.lastDetectedDocElement = child;
         if(level==Levels.ROZDZIAL){
             line = this.scanner.nextLine();
-            return processSimpleText(line,root);
+            return processSimpleText(line);
         }
             return removeId(line,level);
     }
