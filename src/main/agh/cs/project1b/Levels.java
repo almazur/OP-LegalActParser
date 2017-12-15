@@ -11,14 +11,14 @@ public enum Levels {
     LIT("^(?<id>[a-z]{1})[)]\\s",1);
 
     private String regex;
-    private Integer height;
-    Levels(String regex,Integer height){
+    private Integer range;
+    Levels(String regex,Integer range){
         this.regex=regex;
-        this.height=height;
+        this.range = range;
     }
 
     public Boolean lessThen(Levels other){
-        return this.height < other.height;
+        return this.range < other.range;
     }
 
     public String toString() {

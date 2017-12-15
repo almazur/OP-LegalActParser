@@ -1,5 +1,6 @@
 package agh.cs.project1b;
 
+import org.apache.commons.cli.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -9,11 +10,14 @@ import java.util.regex.Pattern;
 public class ArgumentsParser {
 
     private List<String> args;
+    private Options options;
+    //CommandLineParser parser;
 
     //-->OPTION PARSING JAVA
 
     ArgumentsParser(String[] args){
-        this.args= Arrays.asList(args);
+        this.args = Arrays.asList(args);
+        this.options = new Options();
     }
 
     public ArrayList<Object> parseArgs() throws IllegalArgumentException {

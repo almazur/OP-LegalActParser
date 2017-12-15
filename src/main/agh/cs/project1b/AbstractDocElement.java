@@ -48,7 +48,7 @@ public abstract class AbstractDocElement {
         }
     }
 
-    protected Boolean findChild(Levels level, String id) throws NoSuchFieldException {
+    /*protected Boolean findChild(Levels level, String id) throws NoSuchFieldException {
         if(!this.children.isEmpty()){
             if(this.childLevel==level) {
                 return this.children.containsKey(new Key(level,id));
@@ -79,7 +79,7 @@ public abstract class AbstractDocElement {
             }
         }
         else throw new NoSuchFieldException("No such element exists");
-    }
+    }*/
 
     public void printChildren(String prefix){
         if(!this.children.isEmpty()){

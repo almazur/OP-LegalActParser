@@ -1,5 +1,8 @@
 package agh.cs.project1b;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
 public class SimpleDocElement extends AbstractDocElement{
     protected Key key;
 
@@ -20,6 +23,17 @@ public class SimpleDocElement extends AbstractDocElement{
                 child.printSubTree(initIndentation+indentation,indentation);
             }
         }
+    }
+
+    public void printChild(List<Key> keys) throws IllegalArgumentException{
+        Key key=keys.get(0);
+        if(this.children.containsKey(key)){
+            SimpleDocElement child=this.children.get(key);
+            if(keys.size()==1){
+                System.out.println(child.toString());
+                child.printSubTree(" "," ");
+            } else child.printChild(keys.subList(1,keys.size()));
+        } else throw new IllegalArgumentException("Incorrect argument. No such element exists");
     }
 
     public String toString(){

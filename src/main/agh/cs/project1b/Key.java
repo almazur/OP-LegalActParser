@@ -44,4 +44,5 @@ public class Key {
         if(this.level== Levels.DZIAL) return "DZIAŁ "+this.id;
         return "";
     }
+
 }
