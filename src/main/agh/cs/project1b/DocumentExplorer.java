@@ -1,5 +1,6 @@
 package agh.cs.project1b;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.apache.commons.cli.CommandLine;
 
 import javax.swing.text.Document;
@@ -10,23 +11,23 @@ import java.util.List;
 
 public class DocumentExplorer {
     private String content;
-    private Levels childLevel;
+    public Levels childLevel;
     private HashMap<Key,SimpleDocElement> children;
     private HashMap<Key,SimpleDocElement> articles;
     private String lineSeparator;
 
-    DocumentExplorer(String content,Levels childLevel,HashMap<Key,SimpleDocElement> children,
-                     HashMap<Key,SimpleDocElement> articles){
-        this.childLevel=childLevel;
-        this.content=content;
-        this.children=children;
-        this.articles=articles;
+    DocumentExplorer(DocumentRoot document){
+        this.childLevel=document.getChildLevel();
+        this.content=document.getContent();
+        this.children=document.getChildren();
+        this.articles=document.getArticles();
         this.lineSeparator= System.getProperty("line.separator");
     }
 
 
     //private void printTableOfContents(){
     private String printTableOfContents(){
+        //System.out.println(this.childLevel.toString());
         String str="SPIS TRESCI"+lineSeparator;
         //System.out.println("SPIS TRESCI");
         if(this.childLevel==Levels.DZIAL)
@@ -54,13 +55,15 @@ public class DocumentExplorer {
         //System.out.println(section.toString());
         String str=section.toString()+lineSeparator;
         for(SimpleDocElement subSection : section.children.values()){
-            if(subSection.getKey().getLevel()==Levels.ROZDZIAL) str=str+" - "+subSection.toString();
+            if(subSection.getKey().getLevel()==Levels.ROZDZIAL) str=str+" - "+subSection.toString()+lineSeparator;
                 //System.out.println(" - "+subSection.toString());
         }
         return str;
     }
 
-    private void printRange(String firstId, String lastId) throws IllegalArgumentException{
+    //private void printRange(String firstId, String lastId) throws IllegalArgumentException{
+    private String printRange(String firstId, String lastId) throws IllegalArgumentException{
+        String str="";
         List<SimpleDocElement> articlesCopy = new ArrayList<>(articles.values());
         Key firstKey = new Key(Levels.ART,firstId);
         Key lastKey = new Key(Levels.ART,lastId);
@@ -77,23 +80,29 @@ public class DocumentExplorer {
         while(iterator.hasNext()){
             article=iterator.next();
             if(articlesCopy.indexOf(article)<=articlesCopy.indexOf(this.articles.get(lastKey))){
-                System.out.println(article.toString());
-                article.printSubTree(" ","  ");
+                //System.out.println(article.toString());
+                str=str+article.toString()+lineSeparator;
+                str=str+article.printSubTree(" ","  ",lineSeparator);
+                //article.printSubTree(" ","  ");
             }
             else break;
         }
+        return str;
     }
 
-    public void explore(CommandLine cmd) throws IllegalArgumentException{
+    //public void explore(CommandLine cmd) throws IllegalArgumentException{
+    public String explore(CommandLine cmd) throws IllegalArgumentException{
         if (cmd.hasOption("r")) {
             String[] range = cmd.getOptionValues("r");
-            printRange(range[0],range[1]);
+            //printRange(range[0],range[1]);
+            return printRange(range[0],range[1]);
         }
         if (cmd.hasOption("t")) {
             String dzial = cmd.getOptionValue("t","");
-            if (dzial.isEmpty()) printTableOfContents();
+            if (dzial.isEmpty()) return printTableOfContents();
             else {
-                printTableOfSection(dzial);
+                //printTableOfSection(dzial);
+                return printTableOfSection(dzial);
             }
         }
         if(cmd.hasOption("s")){
@@ -106,11 +115,14 @@ public class DocumentExplorer {
 
             if(keys.size()==1) {
                 System.out.println(article.toString());
-                article.printSubTree(" "," ");
+                //article.printSubTree(" "," ",lineSeparator);
+                return article.printSubTree(" "," ",lineSeparator);
             } else {
-                article.printChildFromPath(keys.subList(1,keys.size()));
+                //article.printChildFromPath(keys.subList(1,keys.size()));
+                return article.printChildFromPath(keys.subList(1,keys.size()),lineSeparator);
             }
         }
+        return "";
     }
 
 }

@@ -25,7 +25,8 @@ public class TextReader {
             else document = new UokikParser(scanner).createTree();
 
             //document.explore(cmd);
-            document.runExplorer(cmd);
+            //document.runExplorer(cmd);
+            System.out.println(new DocumentExplorer(document).explore(cmd));
             scanner.close();
         }catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -42,13 +42,17 @@ public abstract class AbstractDocElement {
         }
     }
 
-    protected void printSubTree(String initIndentation,String indentation){
+    //protected void printSubTree(String initIndentation,String indentation){
+    protected String printSubTree(String initIndentation,String indentation,String lineSeparator){
+        String str="";
         if(!this.children.isEmpty()){
             for(SimpleDocElement child : this.children.values()){
-                System.out.println(initIndentation+child.toString());
-                child.printSubTree(initIndentation+indentation,indentation);
+                str=str+initIndentation+child.toString()+lineSeparator;
+                //System.out.println(initIndentation+child.toString());
+                str=str+child.printSubTree(initIndentation+indentation,indentation,lineSeparator);
             }
         }
+        return str;
     }
 
     public String toString(){

@@ -24,8 +24,12 @@ public abstract class AbstractDocumentParser {
             // PROCESS ROOT CONTENT
             while(this.scanner.hasNextLine()){
                 String line = this.scanner.nextLine();
-                if(isSimpleText(line) || findLevel(line) == Levels.TYTUL) processSimpleText(line);
+                if(isSimpleText(line) || findLevel(line) == Levels.TYTUL){
+                    processSimpleText(line);
+                    //System.out.println("LINE "+line+" IS SIMPLE TEXT");
+                }
                 else{
+                    //System.out.println("LINE "+line+" IS NOT SIMPLE TEXT");
                     processSimpleDocElem(line,root,findLevel(line));
                     break;
                 }
@@ -33,8 +37,10 @@ public abstract class AbstractDocumentParser {
             // PROCESS SUBTREE
             while(this.scanner.hasNextLine()){
                 String line = this.scanner.nextLine();
+                //System.out.println("PROCESSING LINE "+line);
                 processLine(line,root);
             }
+            //System.out.println(root.childLevel.toString());
             return root;
         }
     }
@@ -62,6 +68,7 @@ public abstract class AbstractDocumentParser {
         while(iterator.hasNext() && !Pattern.compile(level.toString()).matcher(line).find()){
             level = iterator.next();
         }
+        //System.out.println("FOUND LEVEL: "+level.toString());
         return level;
     }
 
