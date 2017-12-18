@@ -21,6 +21,16 @@ public abstract class AbstractDocumentParser {
             DocumentRoot root = new DocumentRoot();
             this.lastDetectedDocElement = root;
 
+            // PROCESS ROOT CONTENT
+            while(this.scanner.hasNextLine()){
+                String line = this.scanner.nextLine();
+                if(isSimpleText(line) || findLevel(line) == Levels.TYTUL) processSimpleText(line);
+                else{
+                    processSimpleDocElem(line,root,findLevel(line));
+                    break;
+                }
+            }
+            // PROCESS SUBTREE
             while(this.scanner.hasNextLine()){
                 String line = this.scanner.nextLine();
                 processLine(line,root);
@@ -55,7 +65,14 @@ public abstract class AbstractDocumentParser {
         return level;
     }
 
-    protected abstract Boolean isSimpleText(String line);
+    protected Boolean isSimpleText(String line) {
+        for(Levels level : Levels.values()){
+            if(Pattern.compile(level.toString()).matcher(line).find()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     protected String extractIdNum(String line, Levels level){
         Pattern pattern = Pattern.compile(level.toString());

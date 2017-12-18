@@ -24,7 +24,8 @@ public class TextReader {
             if(cmd.hasOption("k")) document = new KonstParser(scanner).createTree();
             else document = new UokikParser(scanner).createTree();
 
-            document.explore(cmd);
+            //document.explore(cmd);
+            document.runExplorer(cmd);
             scanner.close();
         }catch (FileNotFoundException e) {
             e.printStackTrace();

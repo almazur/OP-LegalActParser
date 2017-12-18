@@ -4,11 +4,9 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class KonstParser extends AbstractDocumentParser{
-    private Boolean insideDocument;
 
     public KonstParser(Scanner scanner) {
         super(scanner);
-        this.insideDocument=false;
     }
 
     protected void processLine(String line, DocumentRoot root){
@@ -17,7 +15,6 @@ public class KonstParser extends AbstractDocumentParser{
                 line=processSimpleText(line);
             }
             else {
-                this.insideDocument=true;
                 Levels level = findLevel(line);
                 line = processSimpleDocElem(line,root,level);
             }
@@ -38,12 +35,4 @@ public class KonstParser extends AbstractDocumentParser{
             return removeId(line,level);
     }
 
-    protected Boolean isSimpleText(String line) {
-        for(Levels level : Levels.values()){
-            if(Pattern.compile(level.toString()).matcher(line).find()) {
-                return level == Levels.TYTUL && !this.insideDocument;
-            }
-        }
-        return true;
-    }
 }

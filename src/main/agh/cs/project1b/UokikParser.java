@@ -17,12 +17,4 @@ public class UokikParser extends AbstractDocumentParser{
         return removeId(line,level);
     }
 
-    protected Boolean isSimpleText(String line) {
-        for(Levels level : Levels.values()){
-            if(Pattern.compile(level.toString()).matcher(line).find()){
-                return level == Levels.TYTUL;
-            }
-        }
-        return true;
-    }
 }

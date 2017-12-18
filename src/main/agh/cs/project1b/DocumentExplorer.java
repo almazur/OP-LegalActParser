@@ -2,49 +2,62 @@ package agh.cs.project1b;
 
 import org.apache.commons.cli.CommandLine;
 
-import java.util.*;
+import javax.swing.text.Document;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class DocumentRoot extends AbstractDocElement {
+public class DocumentExplorer {
+    private String content;
+    private Levels childLevel;
+    private HashMap<Key,SimpleDocElement> children;
     private HashMap<Key,SimpleDocElement> articles;
-    private DocumentExplorer explorer;
+    private String lineSeparator;
 
-    DocumentRoot() {
-        super();
-        this.articles=new LinkedHashMap<>();
-        this.explorer=new DocumentExplorer(this.content,this.childLevel,this.children,this.articles);
+    DocumentExplorer(String content,Levels childLevel,HashMap<Key,SimpleDocElement> children,
+                     HashMap<Key,SimpleDocElement> articles){
+        this.childLevel=childLevel;
+        this.content=content;
+        this.children=children;
+        this.articles=articles;
+        this.lineSeparator= System.getProperty("line.separator");
     }
 
-    public void addArticle(SimpleDocElement article) {
-        this.articles.put(article.getKey(), article);
-    }
 
-    public void runExplorer(CommandLine cmd){
-        this.explorer.explore(cmd);
-    }
-
-    /*private void printTableOfContents(){
-        System.out.println("SPIS TRESCI");
+    //private void printTableOfContents(){
+    private String printTableOfContents(){
+        String str="SPIS TRESCI"+lineSeparator;
+        //System.out.println("SPIS TRESCI");
         if(this.childLevel==Levels.DZIAL)
             for(SimpleDocElement section : this.children.values()){
-                printTableOfSection(section.getKey().getId());
+                //printTableOfSection(section.getKey().getId());
+                str=str+printTableOfSection(section.getKey().getId());
             }
         else
             for (SimpleDocElement section : this.children.values()) {
-                System.out.println("* " + section.toString());
+                //System.out.println("* " + section.toString());
+                str=str+"* " + section.toString()+lineSeparator;
                 for (SimpleDocElement subSection : section.children.values())
                     if (subSection.getKey().getLevel() == Levels.TYTUL)
-                        System.out.println(" - " + subSection.getKey().toString());
+                        //System.out.println(" - " + subSection.getKey().toString());
+                        str=str+" - " + subSection.getKey().toString()+lineSeparator;
             }
+            return str;
     }
 
-    private void printTableOfSection(String id) throws IllegalArgumentException{
+    //private void printTableOfSection(String id) throws IllegalArgumentException{
+    private String printTableOfSection(String id) throws IllegalArgumentException{
         if(!(this.childLevel==Levels.DZIAL))
             throw new IllegalArgumentException("Incorrect argument. Document has no dzial's");
         SimpleDocElement section = this.children.get(new Key(Levels.DZIAL,id));
-        System.out.println(section.toString());
+        //System.out.println(section.toString());
+        String str=section.toString()+lineSeparator;
         for(SimpleDocElement subSection : section.children.values()){
-            if(subSection.getKey().getLevel()==Levels.ROZDZIAL) System.out.println(" - "+subSection.toString());
+            if(subSection.getKey().getLevel()==Levels.ROZDZIAL) str=str+" - "+subSection.toString();
+                //System.out.println(" - "+subSection.toString());
         }
+        return str;
     }
 
     private void printRange(String firstId, String lastId) throws IllegalArgumentException{
@@ -98,5 +111,6 @@ public class DocumentRoot extends AbstractDocElement {
                 article.printChildFromPath(keys.subList(1,keys.size()));
             }
         }
-    }*/
+    }
+
 }

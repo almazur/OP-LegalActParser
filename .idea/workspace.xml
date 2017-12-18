@@ -2,23 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="938639dc-2a56-4ecf-90ad-c4d7652eafa6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/ArgumentsParser.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/CMDPatterns.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/SectionDocElement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/UokikRoot.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractRoot.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentRoot.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/OptionMaker.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/CMDParserToolKit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentExplorer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/AbstractDocElement.class" afterPath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/AbstractDocElement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/Key.class" afterPath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/Key.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/Levels.class" afterPath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/Levels.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/SimpleDocElement.class" afterPath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/SimpleDocElement.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/TextReader.class" afterPath="$PROJECT_DIR$/out/production/projekt1b/agh/cs/project1b/TextReader.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocumentParser.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocumentParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/Key.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/Key.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentRoot.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentRoot.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/KonstParser.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/KonstParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/Levels.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/Levels.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/SimpleDocElement.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/SimpleDocElement.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/agh/cs/project1b/UokikParser.java" afterPath="$PROJECT_DIR$/src/main/agh/cs/project1b/UokikParser.java" />
     </list>
@@ -35,22 +28,44 @@
       <file leaf-file-name="TextReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            <state relative-caret-position="386">
+              <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UokikParser.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/UokikParser.java">
+      <file leaf-file-name="DocumentExplorer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentExplorer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="-158">
+              <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
               <folding>
-                <element signature="method#processSimpleDocElem#0;class#UokikParser#0" expanded="false" />
-                <element signature="method#isSimpleText#0;class#UokikParser#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#DocumentExplorer#0;class#DocumentExplorer#0" expanded="false" />
+                <element signature="method#printRange#0;class#DocumentExplorer#0" expanded="false" />
+                <element signature="method#explore#0;class#DocumentExplorer#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="uokik.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/uokik.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="2492" column="8" lean-forward="false" selection-start-line="2492" selection-start-column="5" selection-end-line="2492" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="konst.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/konst.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="524">
+              <caret line="1323" column="21" lean-forward="true" selection-start-line="1323" selection-start-column="21" selection-end-line="1323" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,7 +94,6 @@
       <find>pomini</find>
       <find>136</find>
       <find>ich wsp</find>
-      <find>115</find>
       <find>SĄDY</find>
       <find>SĄDY I TRY</find>
       <find>CHILE</find>
@@ -96,6 +110,7 @@
       <find>art. 173</find>
       <find>art. 10</find>
       <find>)</find>
+      <find>115</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,16 +140,17 @@
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractRoot.java" />
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java" />
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/CMDParserTools.java" />
-        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/UokikParser.java" />
-        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocumentParser.java" />
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/CMDParserToolKit.java" />
-        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentRoot.java" />
-        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java" />
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java" />
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/Key.java" />
-        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/KonstParser.java" />
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/Levels.java" />
         <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/SimpleDocElement.java" />
+        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/UokikParser.java" />
+        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/KonstParser.java" />
+        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocumentParser.java" />
+        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentRoot.java" />
+        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java" />
+        <option value="$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentExplorer.java" />
       </list>
     </option>
   </component>
@@ -160,18 +176,16 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="projekt1b" type="b2602c69:ProjectViewProjectNode" />
               <item name="projekt1b" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="projekt1b" type="b2602c69:ProjectViewProjectNode" />
-              <item name="projekt1b" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="projekt1b" type="b2602c69:ProjectViewProjectNode" />
@@ -195,9 +209,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -240,7 +251,7 @@
       </extension>
       <option name="MAIN_CLASS_NAME" value="agh.cs.project1b.TextReader" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-k -f=C:\\Users\\Ola\\IdeaProjects\\project1\\src\\main\\agh\\cs\\project1\\konst.txt -s art. 164" />
+      <option name="PROGRAM_PARAMETERS" value="-f=C:\\Users\\Ola\\IdeaProjects\\project1\\src\\main\\agh\\cs\\project1\\uokik.txt -r 114 130" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -432,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513358450915</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Final version 1.0">
+      <created>1513362803232</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1513362803232</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -450,11 +468,9 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30251142" sideWeight="0.49479166" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.49375" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24322917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -465,8 +481,10 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990867" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -522,23 +540,16 @@
     <MESSAGE value="Changed literally everything" />
     <MESSAGE value="Changed literally everything :')" />
     <MESSAGE value="Added Command line parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Command line parser" />
+    <MESSAGE value="Final version 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final version 1.0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="11" />
+      <option name="time" value="12" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="14" column="49" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/uokik.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62025">
@@ -554,6 +565,7 @@
             <element signature="method#Key#0;class#Key#0" expanded="false" />
             <element signature="method#equals#0;class#Key#0" expanded="false" />
             <element signature="method#hashCode#0;class#Key#0" expanded="false" />
+            <element signature="method#toString#0;class#Key#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -564,31 +576,25 @@
           <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
           <folding>
             <element signature="method#SimpleDocElement#0;class#SimpleDocElement#0" expanded="false" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="method#printChildFromPath#0;class#SimpleDocElement#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java" />
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
+          <folding>
+            <element signature="method#AbstractDocElement#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#addContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#dehyphenContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#getLastChild#0;class#AbstractDocElement#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -615,6 +621,7 @@
             <element signature="method#Key#0;class#Key#0" expanded="false" />
             <element signature="method#equals#0;class#Key#0" expanded="false" />
             <element signature="method#hashCode#0;class#Key#0" expanded="false" />
+            <element signature="method#toString#0;class#Key#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -625,31 +632,25 @@
           <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
           <folding>
             <element signature="method#SimpleDocElement#0;class#SimpleDocElement#0" expanded="false" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="method#printChildFromPath#0;class#SimpleDocElement#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java" />
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="16" column="43" lean-forward="true" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
-          <folding />
+          <folding>
+            <element signature="method#AbstractDocElement#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#addContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#dehyphenContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#getLastChild#0;class#AbstractDocElement#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -676,6 +677,7 @@
             <element signature="method#Key#0;class#Key#0" expanded="false" />
             <element signature="method#equals#0;class#Key#0" expanded="false" />
             <element signature="method#hashCode#0;class#Key#0" expanded="false" />
+            <element signature="method#toString#0;class#Key#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -686,31 +688,25 @@
           <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
           <folding>
             <element signature="method#SimpleDocElement#0;class#SimpleDocElement#0" expanded="false" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="method#printChildFromPath#0;class#SimpleDocElement#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="14" column="35" lean-forward="false" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java" />
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="method#AbstractDocElement#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#addContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#dehyphenContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#getLastChild#0;class#AbstractDocElement#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -737,6 +733,7 @@
             <element signature="method#Key#0;class#Key#0" expanded="false" />
             <element signature="method#equals#0;class#Key#0" expanded="false" />
             <element signature="method#hashCode#0;class#Key#0" expanded="false" />
+            <element signature="method#toString#0;class#Key#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -747,31 +744,25 @@
           <caret line="20" column="63" lean-forward="false" selection-start-line="20" selection-start-column="63" selection-end-line="20" selection-end-column="63" />
           <folding>
             <element signature="method#SimpleDocElement#0;class#SimpleDocElement#0" expanded="false" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="method#printChildFromPath#0;class#SimpleDocElement#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java" />
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
-          <folding />
+          <folding>
+            <element signature="method#AbstractDocElement#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#addContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#dehyphenContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#getLastChild#0;class#AbstractDocElement#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -798,110 +789,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/CMDPatterns.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="71" lean-forward="false" selection-start-line="6" selection-start-column="71" selection-end-line="6" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/CMDPatterns.java" />
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractRootElement.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/SectionDocElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/uokik.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1025" column="34" lean-forward="true" selection-start-line="1025" selection-start-column="34" selection-end-line="1025" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/UokikRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="31" column="71" lean-forward="false" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/konst.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30817">
-          <caret line="82" column="23" lean-forward="true" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/SectionDocElement.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/UokikRoot.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstRoot.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/ArgumentsParser.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/NoSuchElementException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
           <caret line="37" column="6" lean-forward="false" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocumentParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="method#createTree#0;class#AbstractDocumentParser#0" expanded="false" />
-            <element signature="method#processLine#0;class#AbstractDocumentParser#0" expanded="false" />
-            <element signature="method#processSimpleText#0;class#AbstractDocumentParser#0" expanded="false" />
-            <element signature="method#findLevel#0;class#AbstractDocumentParser#0" expanded="false" />
-            <element signature="method#extractIdNum#0;class#AbstractDocumentParser#0" expanded="false" />
-            <element signature="method#matchesForbiddenRegex#0;class#AbstractDocumentParser#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="method#AbstractDocElement#0;class#AbstractDocElement#0" expanded="false" />
-            <element signature="method#addContent#0;class#AbstractDocElement#0" expanded="false" />
-            <element signature="method#dehyphenContent#0;class#AbstractDocElement#0" expanded="false" />
-            <element signature="method#getLastChild#0;class#AbstractDocElement#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentRoot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-          <folding>
-            <element signature="method#DocumentRoot#0;class#DocumentRoot#0" expanded="false" />
-            <element signature="method#printTableOfContents#0;class#DocumentRoot#0" expanded="false" />
-            <element signature="method#printTableOfSection#0;class#DocumentRoot#0" expanded="false" />
-            <element signature="method#printRange#0;class#DocumentRoot#0" expanded="false" />
-            <element signature="method#explore#0;class#DocumentRoot#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -930,19 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding>
-            <element signature="method#KonstParser#0;class#KonstParser#0" expanded="false" />
-            <element signature="method#processLine#0;class#KonstParser#0" expanded="false" />
-            <element signature="method#processSimpleDocElem#0;class#KonstParser#0" expanded="false" />
-            <element signature="method#isSimpleText#0;class#KonstParser#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/Levels.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="309">
@@ -966,21 +850,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/KonstParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-          <folding />
+        <state relative-caret-position="83">
+          <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+          <folding>
+            <element signature="e#184#185#0" expanded="true" />
+            <element signature="e#214#215#0" expanded="true" />
+            <element signature="method#processSimpleDocElem#0;class#KonstParser#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/UokikParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        <state relative-caret-position="275">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
+            <element signature="e#177#178#0" expanded="true" />
+            <element signature="e#207#208#0" expanded="true" />
             <element signature="method#processSimpleDocElem#0;class#UokikParser#0" expanded="false" />
-            <element signature="method#isSimpleText#0;class#UokikParser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/konst.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="1323" column="21" lean-forward="true" selection-start-line="1323" selection-start-column="21" selection-end-line="1323" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/uokik.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="2492" column="8" lean-forward="false" selection-start-line="2492" selection-start-column="5" selection-end-line="2492" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocumentParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="28" column="68" lean-forward="true" selection-start-line="28" selection-start-column="68" selection-end-line="28" selection-end-column="68" />
+          <folding>
+            <element signature="method#processLine#0;class#AbstractDocumentParser#0" expanded="false" />
+            <element signature="method#processSimpleText#0;class#AbstractDocumentParser#0" expanded="false" />
+            <element signature="method#findLevel#0;class#AbstractDocumentParser#0" expanded="false" />
+            <element signature="method#isSimpleText#0;class#AbstractDocumentParser#0" expanded="false" />
+            <element signature="method#extractIdNum#0;class#AbstractDocumentParser#0" expanded="false" />
+            <element signature="method#matchesForbiddenRegex#0;class#AbstractDocumentParser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/AbstractDocElement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="method#AbstractDocElement#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#addContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#dehyphenContent#0;class#AbstractDocElement#0" expanded="false" />
+            <element signature="method#getLastChild#0;class#AbstractDocElement#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentRoot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#633#634#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/TextReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="386">
+          <caret line="27" column="36" lean-forward="false" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/agh/cs/project1b/DocumentExplorer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-158">
+          <caret line="45" column="23" lean-forward="false" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#DocumentExplorer#0;class#DocumentExplorer#0" expanded="false" />
+            <element signature="method#printRange#0;class#DocumentExplorer#0" expanded="false" />
+            <element signature="method#explore#0;class#DocumentExplorer#0" expanded="false" />
           </folding>
         </state>
       </provider>
