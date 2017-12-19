@@ -4,7 +4,7 @@ import java.util.*;
 
 public abstract class AbstractDocElement {
     protected HashMap<Key,SimpleDocElement> children;
-    protected Levels childLevel;
+    public Levels childLevel;
     protected String content;
 
 
@@ -24,7 +24,7 @@ public abstract class AbstractDocElement {
         else return content+" ";
     }
 
-    protected SimpleDocElement getLastChild(){
+    private SimpleDocElement getLastChild(){
         if(this.children.isEmpty()) return null;
         else{
             List<SimpleDocElement> childrenCopy = new LinkedList<>(this.children.values());
@@ -42,17 +42,19 @@ public abstract class AbstractDocElement {
         }
     }
 
-    //protected void printSubTree(String initIndentation,String indentation){
     protected String printSubTree(String initIndentation,String indentation,String lineSeparator){
-        String str="";
+        StringBuilder str= new StringBuilder();
         if(!this.children.isEmpty()){
             for(SimpleDocElement child : this.children.values()){
-                str=str+initIndentation+child.toString()+lineSeparator;
-                //System.out.println(initIndentation+child.toString());
-                str=str+child.printSubTree(initIndentation+indentation,indentation,lineSeparator);
+                str.append(initIndentation).append(child.toString()).append(lineSeparator);
+                str.append(child.printSubTree(initIndentation + indentation, indentation, lineSeparator));
             }
         }
-        return str;
+        return str.toString();
+    }
+
+    public Levels getChildLevel(){
+        return this.childLevel;
     }
 
     public String toString(){

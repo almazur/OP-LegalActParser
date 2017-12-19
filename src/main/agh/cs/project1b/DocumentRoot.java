@@ -21,12 +21,11 @@ public class DocumentRoot extends AbstractDocElement {
     }
     public HashMap<Key, SimpleDocElement> getChildren() {
         return this.children;
-
-    }public Levels getChildLevel() {
+    }
+    /*public Levels getChildLevel() {
         return this.childLevel;
-    }
-    public String getContent() {
+    }*/
+    /*public String getContent() {
         return this.content;
-    }
-
+    }*/
 }
