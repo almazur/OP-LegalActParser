@@ -1,7 +1,6 @@
 package agh.cs.project1b;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class UokikParser extends AbstractDocumentParser{
 
@@ -9,10 +8,10 @@ public class UokikParser extends AbstractDocumentParser{
         super(scanner);
     }
 
-    protected String processSimpleDocElem(String line, DocumentRoot root, Levels level){
+    protected String processSimpleDocElem(String line, DocumentRoot root, Level level){
         SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
         root.addChild(child);
-        if(level==Levels.ART) root.addArticle(child);
+        if(level== Level.ART) root.addArticle(child);
         this.lastDetectedDocElement = child;
         return removeId(line,level);
     }

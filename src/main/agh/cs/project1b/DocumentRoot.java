@@ -1,7 +1,5 @@
 package agh.cs.project1b;
 
-import org.apache.commons.cli.CommandLine;
-
 import java.util.*;
 
 public class DocumentRoot extends AbstractDocElement {
@@ -19,13 +17,5 @@ public class DocumentRoot extends AbstractDocElement {
     public HashMap<Key, SimpleDocElement> getArticles() {
         return this.articles;
     }
-    public HashMap<Key, SimpleDocElement> getChildren() {
-        return this.children;
-    }
-    /*public Levels getChildLevel() {
-        return this.childLevel;
-    }*/
-    /*public String getContent() {
-        return this.content;
-    }*/
+
 }

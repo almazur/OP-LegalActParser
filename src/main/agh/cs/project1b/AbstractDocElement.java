@@ -4,32 +4,13 @@ import java.util.*;
 
 public abstract class AbstractDocElement {
     protected HashMap<Key,SimpleDocElement> children;
-    public Levels childLevel;
+    protected Level childLevel; //level of "highest" children
     protected String content;
 
 
     AbstractDocElement(){
         this.children= new LinkedHashMap<>();
         this.content="";
-    }
-
-
-    public void addContent(String content){
-        if(this.content.isEmpty()) this.content=content;
-        else this.content= dehyphenContent(this.content) + content;
-    }
-
-    private String dehyphenContent(String content){
-        if(content.endsWith("-")) return content.replaceFirst("-$","");
-        else return content+" ";
-    }
-
-    private SimpleDocElement getLastChild(){
-        if(this.children.isEmpty()) return null;
-        else{
-            List<SimpleDocElement> childrenCopy = new LinkedList<>(this.children.values());
-            return childrenCopy.get(childrenCopy.size()-1);
-        }
     }
 
     public void addChild(SimpleDocElement child){
@@ -41,20 +22,20 @@ public abstract class AbstractDocElement {
             lastElem.addChild(child);
         }
     }
-
-    protected String printSubTree(String initIndentation,String indentation,String lineSeparator){
-        StringBuilder str= new StringBuilder();
-        if(!this.children.isEmpty()){
-            for(SimpleDocElement child : this.children.values()){
-                str.append(initIndentation).append(child.toString()).append(lineSeparator);
-                str.append(child.printSubTree(initIndentation + indentation, indentation, lineSeparator));
-            }
-        }
-        return str.toString();
+    protected SimpleDocElement getLastChild(){
+        List<SimpleDocElement> childrenCopy = new LinkedList<>(this.children.values());
+        return childrenCopy.get(childrenCopy.size()-1);
     }
 
-    public Levels getChildLevel(){
-        return this.childLevel;
+    public void setContent(String content){
+        this.content=content;
+    }
+
+    public HashMap<Key, SimpleDocElement> getChildren() {
+        return this.children;
+    }
+    public String getContent(){
+        return this.content;
     }
 
     public String toString(){

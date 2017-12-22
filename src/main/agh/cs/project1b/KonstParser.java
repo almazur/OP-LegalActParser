@@ -1,7 +1,6 @@
 package agh.cs.project1b;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class KonstParser extends AbstractDocumentParser{
 
@@ -9,26 +8,14 @@ public class KonstParser extends AbstractDocumentParser{
         super(scanner);
     }
 
-    protected void processLine(String line, DocumentRoot root){
-        while(!line.isEmpty()){
-            if(isSimpleText(line)){
-                line=processSimpleText(line);
-            }
-            else {
-                Levels level = findLevel(line);
-                line = processSimpleDocElem(line,root,level);
-            }
-        }
-    }
-
-    protected String processSimpleDocElem(String line, DocumentRoot root, Levels level){
+    protected String processSimpleDocElem(String line, DocumentRoot root, Level level){
         SimpleDocElement child = new SimpleDocElement(new Key(level, extractIdNum(line, level)));
         root.addChild(child);
-        if(level==Levels.ART) {
-            root.addArticle(child);
-        }
+        if(level== Level.ART) root.addArticle(child);
         this.lastDetectedDocElement = child;
-        if(level==Levels.ROZDZIAL){
+        if(level== Level.ROZDZIAL){
+            // every rozdzial has uppercase title in one line (stored as ROZDZIAL content).
+            // any additional uppercase lines right after are PODTYTUL's
             line = this.scanner.nextLine();
             return processSimpleText(line);
         }

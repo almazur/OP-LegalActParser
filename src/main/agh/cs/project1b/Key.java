@@ -1,28 +1,20 @@
 package agh.cs.project1b;
 
 public class Key {
-    private Levels level;
+    private Level level;
     private String id;
 
-    Key(Levels level, String id){
+    Key(Level level, String id){
         this.level = level;
         this.id = id;
     }
 
-    public Levels getLevel() {
-        return this.level;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Key)) return false;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof Key)) return false;
 
-        Key key = (Key) o;
+        Key key = (Key) object;
 
         return getLevel() == key.getLevel() && (getId() != null ? getId().equals(key.getId()) : key.getId() == null);
     }
@@ -34,14 +26,16 @@ public class Key {
         return result;
     }
 
+    public Level getLevel() {
+        return this.level;
+    }
+    public String getId() {
+        return this.id;
+    }
+
+    // returns document element designation
     public String toString() {
-        if(this.level== Levels.PKT || this.level== Levels.LIT) return this.id+")";
-        if(this.level== Levels.ART) return "Art. "+this.id+".";
-        if(this.level== Levels.UST) return this.id+".";
-        if(this.level== Levels.TYTUL) return this.id;
-        if(this.level== Levels.ROZDZIAL) return "Rozdział "+this.id;
-        if(this.level== Levels.DZIAL) return "DZIAŁ "+this.id;
-        return "";
+        return this.level.getPrefix()+this.id+this.level.getSufix();
     }
 
 }
