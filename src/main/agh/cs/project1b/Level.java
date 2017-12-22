@@ -4,7 +4,7 @@ public enum Level {
 
     DZIAL("^DZIAŁ\\s(?<id>\\w+)",7,"dział","DZIAŁ ",""),
     ROZDZIAL("^Rozdział\\s(?<id>\\w+)",6,"rozdział","Rozdział ",""),
-    PODTYTUL("^(?<id>(\\s*[\\p{Lu}][,]*)+)$",5,"","",""),
+    PODTYTUL("^(?<id>(\\s*[\\p{Lu}][,]*)+)$",5,"oddział","",""),
     ART("^Art\\.\\s(?<id>\\w+(–\\w+)?)\\.\\s*",4,"art","Art. ","."),
     UST("^(?<id>\\d+\\w*)\\.\\s",3,"ust","","."),
     PKT("^(?<id>\\d+\\w*)[)]\\s",2,"pkt","",")"),

@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class TextReader {
     public static void main(String[] args) throws FileNotFoundException, IllegalArgumentException, NoSuchElementException, ParseException {
         try {
-            new HelpFormatter().printHelp(" ",new OptionsCreator().getOptions());
+            //new HelpFormatter().printHelp(" ",new OptionsCreator().getOptions());
 
             CommandLineParser parser = new DefaultParser();
             CommandLine cmd = parser.parse(new OptionsCreator().getOptions(), args);

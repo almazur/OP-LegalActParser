@@ -6,11 +6,9 @@ import java.util.List;
 
 public class SpecificContentGetter {
     private String lineSeparator;
-    private String indentation; // indentation is used to make printed text clearer
 
     public SpecificContentGetter() {
         this.lineSeparator= System.getProperty("line.separator");
-        this.indentation = "        ";
     }
 
     public String getRange(String firstId, String lastId, DocumentRoot document) throws IllegalArgumentException{
@@ -31,8 +29,7 @@ public class SpecificContentGetter {
         while(iterator.hasNext()){
             article=iterator.next();
             if(articlesCopy.indexOf(article)<=articlesCopy.indexOf(document.getArticles().get(lastKey))){
-                str=str+this.indentation.substring(article.getKey().getLevel().getRank())
-                        +article.toString()+lineSeparator+getSubTree(article);
+                str=str+article.toString()+lineSeparator+getSubTree(article);
             }
             else break;
         }
@@ -69,8 +66,7 @@ public class SpecificContentGetter {
         StringBuilder str= new StringBuilder();
         if(!elem.getChildren().isEmpty()){
             for(SimpleDocElement child : elem.getChildren().values()){
-                str.append(this.indentation.substring(child.getKey().getLevel().getRank())) // adjusting indentation
-                        .append(child.toString())
+                str.append(child.toString())
                         .append(lineSeparator)
                         .append(getSubTree(child));
             }
